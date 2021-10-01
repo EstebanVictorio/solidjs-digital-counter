@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowUmdGlobalAccess": true,
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"]
+    }
+  }
+}
