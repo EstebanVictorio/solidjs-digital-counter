@@ -1,27 +1,35 @@
-import { createSignal } from "solid-js"
+import { createSignal, createEffect } from "solid-js"
+import StateWorker from "workers/state.ts?worker"
+
+
+const stateWorker = new StateWorker()
+
+
 
 const HelloWorld = () => {
   const [counter, setCounter] = createSignal(0)
 
-  const handleSubClick = () => {
-    setCounter(counter => counter-1)
+  const handleMessage = () => {
+    stateWorker.postMessage("Message sent!")
   }
 
-  const handleAddClick = () => {
-    setCounter(counter => counter+1)
+  const handleStopMessage = () => {
+    stateWorker.postMessage("STOP")
   }
+  
+  createEffect(() => {
+    stateWorker.onmessage = (event) => {
+      console.log("Received new value: ", event.data)
+      setCounter(_ => event.data)
+    }
+  })
 
   return (
     <div>
-      Hello world from SolidJS!
-      <div>
-        <button onClick={handleSubClick}>
-          -
-        </button>
         {counter}
-        <button onClick={handleAddClick}>
-          +
-        </button>
+      <div>
+        <button onClick={handleMessage}>Toggle worker</button>
+        <button onClick={handleStopMessage}>Stop worker</button>
       </div>
     </div>
   )

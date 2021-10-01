@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       components: `${root}/components`,
+      workers: `${root}/workers`,
     },
     extensions: ['.ts', '.tsx']
   },
