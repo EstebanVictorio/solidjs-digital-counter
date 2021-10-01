@@ -1,0 +1,8 @@
+{
+  "name": "solidjs-digital-counter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:EstebanVictorio/solidjs-digital-counter.git",
+  "author": "Esteban Victorio <estebanvictorio92@gmail.com>",
+  "license": "MIT"
+}
